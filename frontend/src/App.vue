@@ -18,4 +18,5 @@ import FooterVue from './components/navbars/FooterNav.vue';
 @import "./assets/scss/base/base.scss";
 @import "./assets/scss/base/typography.scss";
 
+
 </style>
