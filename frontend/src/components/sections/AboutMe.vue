@@ -9,15 +9,6 @@
     </section>
 </template>
 
-<style scoped>
-
-#AboutMe{
-    padding: 2em;
-    /* margin-top: 2em; */
-}
-
-h1{
-    text-align: center;
-}
-
+<style lang="scss">
+@import "@/assets/scss/sections/AboutMe.scss"
 </style>

@@ -34,27 +34,6 @@ export default{
 
 </script>
 
-<style scoped>
-.button_like {
-  /* box-shadow: 1px 4px 10px 3px #c8c8c8; */
-  align-items: center;
-  justify-content: center;
-  gap: .5em;
-  display: flex;
-  border-radius: 20px;
-  background: #222;
-  padding: .5em .75em;
-  width: 10em;
-  font-size: .8em;
-}
-
-.button_like:hover{
-  cursor: pointer;
-}
-.button_like img{
-  width: 2em;
-}
-.button_like p {
-  color: #fff;
-}
+<style lang="scss">
+@import "../../assets/scss/pieces/ButtonLike.scss"
 </style>

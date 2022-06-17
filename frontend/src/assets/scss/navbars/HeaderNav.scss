@@ -1,0 +1,35 @@
+#HeaderSection{
+    height: 2em;
+    background: #fff;
+    padding: .5em;
+    a{
+        color: #000;
+    }
+}
+
+nav{
+    display: flex;
+    align-items: center;
+}
+
+
+
+.logo{
+    width: 2em;
+    margin-right: auto;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+
+.nav_ctnr ul{
+    list-style: none;
+    display: flex;
+    gap: 1em;
+}
+
+.nav_ctnr li:hover{
+    cursor: pointer;
+}

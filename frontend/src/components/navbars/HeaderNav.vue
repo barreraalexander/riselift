@@ -1,22 +1,29 @@
 <template>
   <section id="HeaderSection">
-    <h1>
-      hi
-    </h1>  
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <img
+        src="../../assets/images/icons/kaiyote1.svg"
+        class="logo"
+        alt=""
+      >
+      <div class="nav_ctnr">
+        <ul>
+          <li>
+            <router-link to="/">Home</router-link>
+          </li>
+          <li>
+            <router-link to="/about">About</router-link>
+          </li>
+        </ul>
+      </div>
     </nav>
-    <router-view/>
+    <!-- <router-view/> -->
   </section>
 </template>
 
 <style lang="scss">
-#HeaderSection{
-  background: $primary;
-  h1{
-    color: #fff;
-  }
 
-}
+@import "../../assets/scss/navbars/HeaderNav.scss";
+
+
 </style>

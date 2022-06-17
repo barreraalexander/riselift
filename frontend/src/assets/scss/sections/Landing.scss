@@ -1,0 +1,60 @@
+#Landing{
+    background: #f4f4f4;
+}
+.landing_ctnr{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    h1{
+        text-align: center;
+    }
+}
+.landing_ctnr h1{
+    text-align: center;
+}
+
+.landing1{
+    overflow: hidden;
+    // max-height: 50vh;
+    background: var(--proj_primary);
+
+}
+.landing1 img{
+    // display: none;
+    width: 100%;
+    
+}
+
+
+.landing2{
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    gap: 2em;
+    padding: 2em;   
+}
+
+.landing2 h1{
+    text-align: left;
+}
+
+.landing2 button{
+    width: 10em;
+}
+
+.wave_transition{
+    position: relative;
+    bottom: -.25em;
+}
+
+.wave_transition2{
+    transform: rotate(180deg);
+}
+
+
+
+@media only screen and (min-width: 767px){
+    .landing_ctnr{
+        flex-flow: row;
+    }
+}

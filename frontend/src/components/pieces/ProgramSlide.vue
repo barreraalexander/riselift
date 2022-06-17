@@ -1,10 +1,5 @@
 <template>
     <div :id="slide_id" class="slide">
-        <!-- <img
-            class="slide_bg"
-            src="../../assets/images/exercise1.jpg"
-            alt=""
-        > -->
         <div class="slide_number">
             <p>
                 {{slide_content[slide_id]["slide_num"]}}
@@ -57,43 +52,6 @@ export default{
 </script>
 
 
-<style scoped>
-
-.slide{
-    height: 18em;
-    width: 12em;
-    border: 4px solid #000;
-    background: var(--proj_gray);
-    border-radius: 10px;
-    padding: 1em;
-    display: flex;
-    flex-flow: column;
-    gap: 1em;
-    position: relative;
-    transition: 1s;
-}
-
-
-.slide_number{
-    border-radius: 50%;
-    color: #fff;
-    background: #000;
-    height: 3em;
-    width: 3em;
-    position: absolute;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: -1.5em;
-    left: 12.5em;
-}
-
-
-h1, h4, p{
-    text-align: center;
-}
-
-
-
+<style lang="scss">
+@import "@/assets/scss/pieces/ProgramSlide.scss"
 </style>
