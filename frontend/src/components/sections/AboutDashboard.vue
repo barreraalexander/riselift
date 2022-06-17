@@ -9,10 +9,6 @@
     </section>
 </template>
 
-<style scoped>
-#AboutDashboard{
-    padding: 2em;    
-}
-
-
+<style lang="scss">
+@import "@/assets/scss/sections/AboutDashboard.scss"
 </style>

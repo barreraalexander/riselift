@@ -22,8 +22,5 @@
 </template>
 
 <style lang="scss">
-
-@import "../../assets/scss/navbars/HeaderNav.scss";
-
-
+@import "@/assets/scss/navbars/HeaderNav.scss";
 </style>

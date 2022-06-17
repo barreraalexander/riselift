@@ -17,14 +17,6 @@ defineEmits(['remove'])
 
 </template>
 
-<style scoped>
-#update_button{
-    background: blue;
-    /* width: 30em; */
-}
-#remove_button{
-    background: red;
-    /* width: 30em; */
-}
-
+<style lang="scss">
+@import "@/assets/scss/pieces/SessionItem.scss"
 </style>

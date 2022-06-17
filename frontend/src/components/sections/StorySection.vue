@@ -12,27 +12,6 @@
   </section>
 </template>
 
-<style scoped>
-#story_section {
-  padding: 1em;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  gap: 2em;
-  background: #fff;
-
-}
-
-
-h2,p{
-  text-align: center;
-}
-
-
-.media_ctnr{
-  background: #000;
-  width: 80%;
-  height: 10em;
-
-}
+<style lang="scss">
+@import "@/assets/scss/sections/StorySection.scss"
 </style>

@@ -108,51 +108,6 @@ export default {
 
 
 
-<style scoped>
-#LoginModal {
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  z-index: 100;
-  color: #fff;
-}
-
-.login_ctnr {
-  background-color: #222;
-  border-radius: 20px;
-  height: 90%;
-  max-height: 40em;
-  padding: 2em 0.5em;
-  max-width: 40em;
-  width: 80%;
-}
-
-h2 {
-  text-align: center;
-}
-
-.form_ctnr{
-    display: flex;
-    flex-flow: column;
-    gap: 2em;
-}
-
-button{
-    width: 10em;
-}
-
-.form_group {
-  display: flex;
-  flex-flow: column;
-  gap: 0.25em;
-}
-
-input {
-  width: 75%;
-  max-width: 25em;
-}
+<style lang="scss">
+@import "@/assets/scss/modals/Login.scss"
 </style>

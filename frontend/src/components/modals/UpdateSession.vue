@@ -37,8 +37,6 @@ export default {
 </script>
 
 
-<style scoped>
-#UpdateSession{
-    margin-bottom: 2em;
-}
+<style lang="scss">
+@import "@/assets/scss/modals/UpdateSession.scss"
 </style>
