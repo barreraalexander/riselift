@@ -39,6 +39,9 @@ li{
 }
 
 a{
-    display: contents;
     text-decoration: none;
+}
+
+.router-link-active{
+    border-bottom: 4px solid $proj_primary;
 }

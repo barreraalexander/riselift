@@ -12,8 +12,8 @@ import HeaderVue from './components/navbars/HeaderNav.vue';
 </template>
 
 <style lang="scss">
-@import "./assets/scss/base/base.scss";
-@import "./assets/scss/base/typography.scss";
-
+@import "@/assets/scss/base/base.scss";
+@import "@/assets/scss/base/typography.scss";
+@import "@/assets/scss/base/classes.scss"
 
 </style>

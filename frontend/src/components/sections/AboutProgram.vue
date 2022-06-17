@@ -57,5 +57,4 @@ export default {
 
 <style lang="scss">
 @import "@/assets/scss/sections/AboutProgram.scss"
-
 </style>
