@@ -18,5 +18,5 @@ defineEmits(['remove'])
 </template>
 
 <style lang="scss">
-@import "@/assets/scss/pieces/SessionItem.scss"
+@import "@/assets/scss/pieces/SessionItem.scss";
 </style>

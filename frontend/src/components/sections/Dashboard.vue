@@ -88,7 +88,7 @@ export default {
         WriteInput(event){
             if (event){
                 let elem = event.target.value
-4
+
                 if (event.target.id=="updateSession_input"){
                     this.update_session_data.name = elem
                     return
