@@ -6,4 +6,11 @@
     </section>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+#FooterSection{
+    height: 10vh;
+    background: green($color: #000000);
+}
+
+</style>

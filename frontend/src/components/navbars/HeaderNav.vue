@@ -14,10 +14,12 @@
           <li>
             <router-link to="/about">About</router-link>
           </li>
+          <li>
+            <router-link to="/register">Sign Up</router-link>
+          </li>
         </ul>
       </div>
     </nav>
-    <!-- <router-view/> -->
   </section>
 </template>
 
