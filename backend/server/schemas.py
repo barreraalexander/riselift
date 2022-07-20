@@ -3,8 +3,19 @@ from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import Optional
 
+class UserOut(BaseModel):
+    id: int
+    email: EmailStr
+    upldate: datetime
+
+    class Config:
+        orm_mode = True
+
+
+
 class WorkSessionBase(BaseModel):
     name: str
+    # owner: UserOut
 
 class WorkSessionCreate(WorkSessionBase):
     pass
@@ -12,6 +23,10 @@ class WorkSessionCreate(WorkSessionBase):
 class WorkSession(WorkSessionBase):
     id: int
     upldate: datetime
+    owner_id: int
+    # owner: User
+    owner: UserOut
+
 
     class Config:
         orm_mode = True
@@ -22,15 +37,6 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
     
-
-class UserOut(BaseModel):
-    id: int
-    email: EmailStr
-    upldate: datetime
-
-    class Config:
-        orm_mode = True
-
 
 class UserLogin(BaseModel):
     email: EmailStr
@@ -43,3 +49,10 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     id: Optional[str]
+
+
+class WorkSessionOut(BaseModel):
+    WorkSession: WorkSession
+
+    class Config:
+        orm_mode = True

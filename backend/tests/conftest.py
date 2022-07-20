@@ -22,6 +22,8 @@ app = create_app()
 client = TestClient(app)
 
 
+
+
 @pytest.fixture()
 def session():
     Base.metadata.drop_all(bind=engine)
@@ -44,3 +46,71 @@ def client(session):
     app = create_app()
     app.dependency_overrides[get_db] = override_get_db
     yield TestClient(app)
+
+
+
+
+
+@pytest.fixture
+def test_user(client):
+    user_data = {
+        "email" : "sheik@gmail.com",
+        "password" : "password234" 
+    }
+
+    res = client.post("/users/", json=user_data)
+
+    assert res.status_code == 201
+
+    new_user = res.json()
+    new_user['password'] = user_data['password']
+    return new_user
+
+
+@pytest.fixture
+def token(test_user):
+    return create_access_token({
+        "user_id" : test_user.get('id'),
+    })
+
+
+@pytest.fixture
+def authorized_client(client, token):
+    client.headers = {
+        **client.headers,
+        "Authorization": f"Bearer {token}"
+    }
+
+    return client
+
+
+@pytest.fixture
+def test_worksessions(test_user, session):
+    worksessions_data = [
+        {
+            'name' : 'workout 1',
+            'owner_id' : test_user.get('id')
+        },
+        {
+            'name' : 'workout 2',
+            'owner_id' : test_user.get('id')
+        },
+        {
+            'name' : 'workout 3',
+            'owner_id' : test_user.get('id')
+        },
+    ]
+
+    def create_worksession_model(work_session):
+        return models.WorkSession(**work_session)
+
+    worksession_map = map(create_worksession_model, worksessions_data)
+    worksessions = list(worksession_map)
+
+    session.add_all(worksessions)
+    session.commit()
+    
+    worksessions = session.query(models.WorkSession).all()
+
+    return worksessions
+
