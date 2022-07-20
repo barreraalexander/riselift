@@ -12,7 +12,6 @@ class UserOut(BaseModel):
         orm_mode = True
 
 
-
 class WorkSessionBase(BaseModel):
     name: str
     # owner: UserOut
@@ -30,6 +29,7 @@ class WorkSession(WorkSessionBase):
 
     class Config:
         orm_mode = True
+
 
 
 

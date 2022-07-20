@@ -44,10 +44,8 @@ def create_worksession(workout: schemas.WorkSessionCreate, db: Session = Depends
 
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
-# def delete_worksession(id: int, db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
-def delete_worksession(id: int, db: Session = Depends(get_db)):
+def delete_worksession(id: int, db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
     
-    # worksession_query = db.query(models.WorkSession).filter(models.WorkSession.id == id)
     worksession_query = db.query(models.WorkSession).filter(models.WorkSession.id == id)
 
     worksession = worksession_query.first()
@@ -55,8 +53,8 @@ def delete_worksession(id: int, db: Session = Depends(get_db)):
     if worksession==None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Work Session was not found")
 
-    # if worksession.owner_id!=current_user.id:
-    #     raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
+    if worksession.owner_id!=current_user.id:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not authorized to perform requested action")
 
     worksession_query.delete(synchronize_session=False)    
     db.commit()

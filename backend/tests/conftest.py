@@ -22,8 +22,6 @@ app = create_app()
 client = TestClient(app)
 
 
-
-
 @pytest.fixture()
 def session():
     Base.metadata.drop_all(bind=engine)
@@ -50,6 +48,21 @@ def client(session):
 
 
 
+
+@pytest.fixture
+def test_user2(client):
+    user_data = {
+        "email" : "sheik123@gmail.com",
+        "password" : "password234" 
+    }
+
+    res = client.post("/users/", json=user_data)
+
+    assert res.status_code == 201
+
+    new_user = res.json()
+    new_user['password'] = user_data['password']
+    return new_user
 
 @pytest.fixture
 def test_user(client):
@@ -85,7 +98,7 @@ def authorized_client(client, token):
 
 
 @pytest.fixture
-def test_worksessions(test_user, session):
+def test_worksessions(test_user, session, test_user2):
     worksessions_data = [
         {
             'name' : 'workout 1',
@@ -99,6 +112,11 @@ def test_worksessions(test_user, session):
             'name' : 'workout 3',
             'owner_id' : test_user.get('id')
         },
+        {
+            'name' : 'workout 1',
+            'owner_id' : test_user2.get('id')
+        },
+
     ]
 
     def create_worksession_model(work_session):
