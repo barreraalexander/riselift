@@ -11,7 +11,7 @@ class WorkSessionCreate(WorkSessionBase):
 
 class WorkSession(WorkSessionBase):
     id: int
-    created_at: datetime
+    upldate: datetime
 
     class Config:
         orm_mode = True
@@ -26,7 +26,7 @@ class UserCreate(BaseModel):
 class UserOut(BaseModel):
     id: int
     email: EmailStr
-    created_at: datetime
+    upldate: datetime
 
     class Config:
         orm_mode = True

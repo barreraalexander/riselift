@@ -22,4 +22,9 @@ def create_app():
     app.include_router(auth.router)
     app.include_router(worksession.router)
 
+    @app.get("/")
+    def root():
+        return {"message" : "Hello World"}
+
+
     return app
