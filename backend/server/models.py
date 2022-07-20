@@ -9,7 +9,8 @@ class User(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
-    created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+    upldate = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+    moddate = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
 
 
 class WorkSession(Base):
@@ -17,7 +18,8 @@ class WorkSession(Base):
 
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
-    created_at = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+    upldate = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
+    moddate = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
 
     session_begin = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
     session_end = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))

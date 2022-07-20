@@ -5,7 +5,7 @@ from server import models
 from server.database import engine
 from server.routers import user, auth, worksession
 
-models.Base.metadata.create_all(bind=engine)
+# models.Base.metadata.create_all(bind=engine)
 
 def create_app():
     origins = [
