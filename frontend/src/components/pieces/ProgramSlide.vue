@@ -53,5 +53,5 @@ export default{
 
 
 <style lang="scss">
-@import "@/assets/scss/pieces/ProgramSlide.scss"
+@import "@/assets/scss/pieces/ProgramSlide.scss";
 </style>
