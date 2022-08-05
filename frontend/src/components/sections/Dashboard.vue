@@ -52,7 +52,6 @@ export default {
             valid: true,
             exercises: [],
             text_exer: 1,
-
         }
     },
 

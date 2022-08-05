@@ -18,7 +18,12 @@ const routes = [
     path: '/register',
     name: 'register',
     component: () => import(/* webpackChunkName: "about" */ '@/views/LoginView.vue')
-  }
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/DashboardView.vue')
+  },
 ]
 
 const router = createRouter({
