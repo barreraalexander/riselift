@@ -24,6 +24,11 @@ const routes = [
     name: 'dashboard',
     component: () => import(/* webpackChunkName: "about" */ '@/views/DashboardView.vue')
   },
+  {
+    path: '/new_session',
+    name: 'new_session',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/NewSessionView.vue')
+  },
 ]
 
 const router = createRouter({

@@ -12,8 +12,10 @@ router = APIRouter(
 )
 
 @router.get("/", response_model=List[schemas.WorkSession])
-def get_worksessions(db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
-    worksession = db.query(models.WorkSession).filter(models.WorkSession.owner_id==current_user.id).all()
+def get_worksessions(db: Session = Depends(get_db)):
+# def get_worksessions(db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
+    # worksession = db.query(models.WorkSession).filter(models.WorkSession.owner_id==current_user.id).all()
+    worksession = db.query(models.WorkSession).filter(models.WorkSession.owner_id==6).all()
     return worksession
 
 @router.get("/{id}", response_model=schemas.WorkSession)
@@ -32,9 +34,10 @@ def get_worksession(id: int, db: Session=Depends(get_db), current_user: int=Depe
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.WorkSession)
-def create_worksession(workout: schemas.WorkSessionCreate, db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
+# def create_worksession(workout: schemas.WorkSessionCreate, db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
+def create_worksession(workout: schemas.WorkSessionCreate, db: Session = Depends(get_db)):
 
-    new_worksession = models.WorkSession(owner_id=current_user.id, **workout.dict())
+    new_worksession = models.WorkSession(owner_id=6, **workout.dict())
 
     db.add(new_worksession)
     db.commit()
