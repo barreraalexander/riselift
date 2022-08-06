@@ -19,6 +19,8 @@ class WorkSession(Base):
 
     id = Column(Integer, primary_key=True, nullable=False)
     name = Column(String, nullable=False)
+    exercises = Column(String, nullable=True)
+
     upldate = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
     moddate = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
 
