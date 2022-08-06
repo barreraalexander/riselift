@@ -30,3 +30,17 @@ class WorkSession(Base):
     owner_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
     owner = relationship("User")
+
+class Exercise(Base):
+    __tablename__ = 'exercises'
+
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(String, nullable=False)
+    list_index = Column(Integer, nullable=False)
+    rep_count = Column(Integer, nullable=False)
+    weight = Column(Integer, nullable=False)
+    weight_type = Column(String, nullable=False)
+
+    worksession_id = Column(Integer, ForeignKey("worksessions.id", ondelete="CASCADE"), nullable=False)
+    worksession = relationship("WorkSession")
+

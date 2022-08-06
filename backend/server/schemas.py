@@ -25,6 +25,8 @@ class WorkSession(WorkSessionBase):
     owner_id: int
     # owner: User
     owner: UserOut
+    exercises: str = None
+
 
 
     class Config:
