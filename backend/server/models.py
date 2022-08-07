@@ -1,5 +1,5 @@
 from server.database import Base
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 from sqlalchemy.sql.expression import text
 from sqlalchemy.orm import relationship
@@ -38,9 +38,10 @@ class Exercise(Base):
     name = Column(String, nullable=False)
     list_index = Column(Integer, nullable=False)
     rep_count = Column(Integer, nullable=False)
-    weight = Column(Integer, nullable=False)
+    weight = Column(Float, nullable=False)
     weight_type = Column(String, nullable=False)
 
     worksession_id = Column(Integer, ForeignKey("worksessions.id", ondelete="CASCADE"), nullable=False)
     worksession = relationship("WorkSession")
 
+ 
