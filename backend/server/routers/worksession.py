@@ -15,8 +15,8 @@ router = APIRouter(
 def get_worksessions(db: Session = Depends(get_db)):
 # def get_worksessions(db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
     # worksession = db.query(models.WorkSession).filter(models.WorkSession.owner_id==current_user.id).all()
-    worksession = db.query(models.WorkSession).filter(models.WorkSession.owner_id==6).all()
-    return worksession
+    worksessions = db.query(models.WorkSession).filter(models.WorkSession.owner_id==6).all()
+    return worksessions
 
 @router.get("/{id}", response_model=schemas.WorkSession)
 def get_worksession(id: int, db: Session=Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):

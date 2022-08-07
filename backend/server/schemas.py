@@ -80,3 +80,6 @@ class ExerciseOut(BaseModel):
 
     class Config:
         orm_mode = True
+
+class ExerciseCreate(ExerciseBase):
+    pass
