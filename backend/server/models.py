@@ -43,5 +43,5 @@ class Exercise(Base):
     worksession_id = Column(Integer, ForeignKey("worksessions.id", ondelete="CASCADE"), nullable=False)
     worksession = relationship("WorkSession")
 
-    # owner_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    # owner = relationship("User")
+    owner_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    owner = relationship("User")
