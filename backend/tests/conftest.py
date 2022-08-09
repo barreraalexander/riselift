@@ -46,9 +46,6 @@ def client(session):
     yield TestClient(app)
 
 
-
-
-
 @pytest.fixture
 def test_user2(client):
     user_data = {
@@ -132,3 +129,30 @@ def test_worksessions(test_user, session, test_user2):
 
     return worksessions
 
+
+
+@pytest.fixture
+def test_exercises(test_worksessions, session):
+    exercises_data = [
+        {
+            'name': 'exercise1',
+            'list_index': 0,
+            'rep_count': 10,
+            'weight': 105,
+            'weight_type': 'lbs',
+            'worksession_id' : test_worksessions[0].id
+        }
+    ]
+
+    def create_exercise_model(exercise):
+        return models.Exercise(**exercise)
+
+    exercise_map = map(create_exercise_model, exercises_data)
+    exercises = list(exercise_map)
+
+    session.add_all(exercises)
+    session.commit()
+
+    exercises = session.query(models.Exercise).all()
+
+    return exercises

@@ -23,7 +23,7 @@ def create_app():
     app.include_router(user.router)
     app.include_router(auth.router)
     app.include_router(worksession.router)
-    # app.include_router(exercise.router)
+    app.include_router(exercise.router)
 
     @app.get("/")
     def root():

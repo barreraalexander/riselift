@@ -14,7 +14,7 @@ class UserOut(BaseModel):
 
 class WorkSessionBase(BaseModel):
     name: str
-    # owner: UserOut
+    owner: UserOut
 
 class WorkSessionCreate(WorkSessionBase):
     pass
@@ -23,7 +23,7 @@ class WorkSession(WorkSessionBase):
     id: int
     upldate: datetime
     owner_id: int
-    owner: UserOut
+    # owner: UserOut
     exercises: str = None
 
     class Config:
@@ -51,7 +51,13 @@ class TokenData(BaseModel):
 
 
 class WorkSessionOut(BaseModel):
-    WorkSession: WorkSession
+    id: int
+    name: str
+    session_begin: datetime
+    session_end: datetime
+    exercises: str = None
+    owner: UserOut
+    # WorkSession: WorkSession
 
     class Config:
         orm_mode = True
@@ -61,14 +67,22 @@ class WorkSessionOut(BaseModel):
 class ExerciseBase(BaseModel):
     name: str
     list_index: int
+    rep_count: int
+    weight: float
+    weight_type: str
+    worksession_id: int
+
+
+class ExerciseCreate(ExerciseBase):
+    pass
 
 class Exercise(ExerciseBase):
     id: int
+    # worksession_id: int
+    worksession: WorkSessionOut
 
-    name: str
-    list_index: int
-    weight: float
-    weight_type: str
+    # owner_id: int
+    # owner: UserOut
 
 
     class Config:
@@ -81,5 +95,3 @@ class ExerciseOut(BaseModel):
     class Config:
         orm_mode = True
 
-class ExerciseCreate(ExerciseBase):
-    pass
