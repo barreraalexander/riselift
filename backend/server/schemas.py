@@ -71,6 +71,7 @@ class ExerciseBase(BaseModel):
     weight: float
     weight_type: str
     worksession_id: int
+    owner_id: int
 
 
 class ExerciseCreate(ExerciseBase):
@@ -80,10 +81,10 @@ class Exercise(ExerciseBase):
     id: int
     # worksession_id: int
     worksession: WorkSessionOut
+    owner: UserOut
 
     # owner_id: int
     # owner: UserOut
-
 
     class Config:
         orm_mode = True
