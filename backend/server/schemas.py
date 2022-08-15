@@ -14,7 +14,7 @@ class UserOut(BaseModel):
 
 class WorkSessionBase(BaseModel):
     name: str
-    owner: UserOut
+    # owner: UserOut
 
 class WorkSessionCreate(WorkSessionBase):
     pass
@@ -23,7 +23,7 @@ class WorkSession(WorkSessionBase):
     id: int
     upldate: datetime
     owner_id: int
-    # owner: UserOut
+    owner: UserOut
     exercises: str = None
 
     class Config:
