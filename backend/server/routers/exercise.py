@@ -11,7 +11,7 @@ router = APIRouter(
     tags = ['Work Sessions']
 )
 
-@router.get("/", response_model=List[schemas.Exercise])
+@router.get("/", response_model=List[schemas.ExerciseOut])
 # def get_exercises(db: Session = Depends(get_db)):
 def get_exercises(db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
     # if  not current_user:
@@ -25,23 +25,25 @@ def get_exercises(db: Session = Depends(get_db), current_user: int=Depends(oauth
     # exercises = db.query(models.Exercise).all()
     return exercises
 
-@router.get("/{id}", response_model=schemas.Exercise)
+@router.get("/{id}", response_model=schemas.ExerciseOut)
 def get_exercise(id: int, db: Session=Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
     exercise = db.query(models.Exercise).filter(models.Exercise.id==id).first()
+    
+
 
     if not exercise:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Exercise not Found')
 
-    if exercise.worksession.owner.id != current_user.id:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail='Not authorized to perform requested action')
-
+    # if exercise.worksession.owner.id != current_user.id:
+    #     raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail='Not authorized to perform requested action')
 
     return exercise
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.Exercise)
 def create_exercise(exercise: schemas.ExerciseCreate, db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
 
-    new_exercise = models.Exercise(**exercise.dict())
+    new_exercise = models.Exercise(owner_id=current_user.id, **exercise.dict())
+    
     db.add(new_exercise)
     db.commit()
     db.refresh(new_exercise)

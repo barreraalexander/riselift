@@ -41,7 +41,7 @@ class Exercise(Base):
     weight_type = Column(String, nullable=False)
 
     worksession_id = Column(Integer, ForeignKey("worksessions.id", ondelete="CASCADE"), nullable=False)
-    worksession = relationship("WorkSession")
+    # worksession = relationship("WorkSession")
 
     owner_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    owner = relationship("User")
+    # owner = relationship("User")

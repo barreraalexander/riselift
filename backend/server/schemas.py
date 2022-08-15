@@ -70,28 +70,26 @@ class ExerciseBase(BaseModel):
     rep_count: int
     weight: float
     weight_type: str
-    worksession_id: int
-    owner_id: int
 
 
 class ExerciseCreate(ExerciseBase):
-    pass
+    worksession_id: int
 
 class Exercise(ExerciseBase):
     id: int
-    # worksession_id: int
-    worksession: WorkSessionOut
-    owner: UserOut
-
-    # owner_id: int
-    # owner: UserOut
+    worksession_id: int
+    owner_id: int
 
     class Config:
         orm_mode = True
 
 
 class ExerciseOut(BaseModel):
-    Exercise: Exercise
+    id: int
+    worksession_id: int
+    owner_id: int
+    # worksession_id: int
+    pass
 
     class Config:
         orm_mode = True

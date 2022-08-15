@@ -4,30 +4,30 @@ from server import schemas
 from jose import jwt
 from server.config import settings
 
-# def test_authorized_get_exercise(client, test_exercises):
-#     res = client.get("/exercises/")
+# def test_authorized_get_exercise(authorized_client, test_exercises):
+#     res = authorized_client.get(f"/exercises/{test_exercises[0].get('id')}")
 #     assert res.status_code == 200
 
 
 # def test_authorized_get_exercises(authorized_client, test_exercises):
-#     res = authorized_client.get(f"/exercises/1")
+#     res = authorized_client.get("/exercises/")
 #     assert res.status_code == 200
 
 def test_authorized_user_get_all_exercises(authorized_client):
     res = authorized_client.get(f"/exercises/")
     assert res.status_code == 200
 
-def test_authorized_user_get_one_exercise(authorized_client, test_exercises):
-    res = authorized_client.get(f"/exercises/{test_exercises[0].id}")
-    assert res.status_code == 200
+# def test_authorized_user_get_one_exercise(authorized_client, test_exercises):
+#     res = authorized_client.get(f"/exercises/{test_exercises[0].id}")
+#     assert res.status_code == 200
 
 def test_unauthorized_user_get_all_exercises(client):
     res = client.get(f"/exercises/")
     assert res.status_code == 401
 
-def test_unauthorized_user_get_one_exercise(client, test_exercises):
-    res = client.get(f"/exercises/{test_exercises[0].id}")
-    assert res.status_code == 401
+# def test_unauthorized_user_get_one_exercise(client, test_exercises):
+#     res = client.get(f"/exercises/{test_exercises[0].id}")
+#     assert res.status_code == 401
 
 def test_get_one_exercise_not_exist(authorized_client):
     res = authorized_client.get(f"/exercises/8888")
@@ -41,9 +41,9 @@ def test_get_one_exercise_not_exist(authorized_client):
     ("shoulder press", 3, 16, 50, 'lbs', 201),
     ("situps", 4, 16, 0, 'lbs', 201),
 ])
-def test_create_exercises(authorized_client, test_worksessions,
+def test_create_exercises(authorized_client, test_user, test_worksessions,
     name, list_index, rep_count, weight, weight_type, status_code):
-    
+
     res = authorized_client.post(
         "/exercises/", json={
             "name": name,
@@ -51,7 +51,8 @@ def test_create_exercises(authorized_client, test_worksessions,
             "rep_count": rep_count,
             "weight": weight,
             "weight_type": weight_type,
-            "worksession_id" : test_worksessions[0].id
+            "worksession_id": test_worksessions[0].id,
+            "owner_id": test_user.get('id')
         }
     )
 
