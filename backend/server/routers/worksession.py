@@ -34,10 +34,11 @@ def get_worksession(id: int, db: Session=Depends(get_db), current_user: int=Depe
 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.WorkSession)
-def create_worksession(workout: schemas.WorkSessionCreate, db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
-# def create_worksession(workout: schemas.WorkSessionCreate, db: Session = Depends(get_db)):
+# def create_worksession(workout: schemas.WorkSessionCreate, db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
+def create_worksession(workout: schemas.WorkSessionCreate, db: Session = Depends(get_db)):
 
-    new_worksession = models.WorkSession(owner_id=current_user.id, **workout.dict())
+    # new_worksession = models.WorkSession(owner_id=current_user.id, **workout.dict())
+    new_worksession = models.WorkSession(owner_id=1, **workout.dict())
 
     db.add(new_worksession)
     db.commit()

@@ -40,9 +40,10 @@ def get_exercise(id: int, db: Session=Depends(get_db), current_user: int=Depends
     return exercise
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.Exercise)
-def create_exercise(exercise: schemas.ExerciseCreate, db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
+# def create_exercise(exercise: schemas.ExerciseCreate, db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
+def create_exercise(exercise: schemas.ExerciseCreate, db: Session = Depends(get_db)):
 
-    new_exercise = models.Exercise(owner_id=current_user.id, **exercise.dict())
+    new_exercise = models.Exercise(owner_id=1, **exercise.dict())
     
     db.add(new_exercise)
     db.commit()

@@ -24,7 +24,6 @@ class WorkSession(WorkSessionBase):
     upldate: datetime
     owner_id: int
     owner: UserOut
-    exercises: str = None
 
     class Config:
         orm_mode = True
@@ -55,7 +54,6 @@ class WorkSessionOut(BaseModel):
     name: str
     session_begin: datetime
     session_end: datetime
-    exercises: str = None
     owner: UserOut
     # WorkSession: WorkSession
 
@@ -84,10 +82,11 @@ class Exercise(ExerciseBase):
         orm_mode = True
 
 
-class ExerciseOut(BaseModel):
-    id: int
-    worksession_id: int
-    owner_id: int
+class ExerciseOut(Exercise):
+    # id: int
+    # name: str
+    # list_index: int
+    
     # worksession_id: int
     pass
 
