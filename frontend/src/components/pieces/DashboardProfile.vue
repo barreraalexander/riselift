@@ -1,7 +1,7 @@
 <template>
     <div class="dashboard_profile">
-        <p>hi</p>
-        <p>{{this.user['email']}}</p>
+
+        <p>hi {{this.user['email']}}</p>
         <ul class="exercises_ctnr">
             <div
                 class="exercise_ctnr"
