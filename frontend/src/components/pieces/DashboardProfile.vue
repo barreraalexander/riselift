@@ -5,12 +5,13 @@
         <ul class="exercises_ctnr">
             <div
                 class="exercise_ctnr"
+                @click="showExerciseModal"
                 v-for="exercise in user_exercises"
                 :key="exercise.id"
                 :id="exercise.id"
                 :name="exercise.name"
             >
-                <p @click="showExerciseModal">
+                <p>
                     {{exercise.name}}
                 </p>
             </div>
@@ -46,6 +47,7 @@ export default {
             }
         },
         showExerciseModal(){
+            alert('here')
             // should it be a modal or an exercise
         }
     },
