@@ -9,6 +9,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True, nullable=False)
     email = Column(String, nullable=False, unique=True)
+    name = Column(String, nullable=False)
     password = Column(String, nullable=False)
     upldate = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))
     moddate = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('now()'))

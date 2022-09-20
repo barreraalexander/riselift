@@ -1,3 +1,4 @@
+from unicodedata import name
 from pydantic import BaseModel, EmailStr
 
 from datetime import datetime
@@ -8,6 +9,7 @@ from typing import Optional
 class UserOut(BaseModel):
     id: int
     email: EmailStr
+    name: str
     upldate: datetime
 
     class Config:
@@ -36,6 +38,7 @@ class WorkSession(WorkSessionBase):
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
+    name: str
     
 
 class UserLogin(BaseModel):
