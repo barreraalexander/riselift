@@ -1,27 +1,15 @@
-<script>
-import { defineComponent } from 'vue';
+<script setup>
 import HeaderVue from './components/navbars/HeaderNav.vue';
 import FooterVue from './components/navbars/FooterNav.vue';
-
-
-export default defineComponent({
-    name: 'App',
-    components: {
-        HeaderVue,
-        FooterVue
-    }
-})
-
 </script>
+    
 <template>
     <section id="AppSection">
         <HeaderVue/>
-        <!-- <router-view/> -->
+        <router-view/>
         <FooterVue/>
     </section>
 </template>
-
-
 
 <style lang="scss">
 @import "@/assets/scss/base/base.scss";
