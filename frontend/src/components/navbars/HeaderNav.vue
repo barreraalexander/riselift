@@ -12,7 +12,7 @@
                     <router-link to="/">Home</router-link>
                 </li>
                 <li>
-                    <router-link to="/">Sign Up</router-link>
+                    <router-link to="/register">Sign Up</router-link>
                 </li>
             </ul>
         </div>
