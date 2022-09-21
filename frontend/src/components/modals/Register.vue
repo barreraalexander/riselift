@@ -1,9 +1,3 @@
-<script setup>
-import axios from 'axios';
-
-</script>
-
-
 <template>
 
 <section id="RegisterModal">
@@ -44,8 +38,8 @@ import axios from 'axios';
 
 </template>
 
-<script>
-// import axios from 'axios'
+<script lang="ts">
+import axios from 'axios'
 
 
 export default {

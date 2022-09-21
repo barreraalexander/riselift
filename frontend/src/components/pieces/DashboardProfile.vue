@@ -22,7 +22,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios'
 
 export default {
@@ -30,18 +30,23 @@ export default {
         return {
             user: {},
             user_exercises: [],
+            req_config: {
+                headers: {
+                    // Authorization: `Bearer ${result.data.access_token}`
+                }
+            },
 
         }
     },
     methods : {
         async getUser(){
-            let result = await axios.get('http://localhost:5000/users/1')
+            let result = await axios.get('http://localhost:5000/users/current', this.req_config)
             if (result.data){
                 return result.data
             }
         },
         async getWorksessions(){
-            let result = await axios.get('http://localhost:5000/worksessions')
+            let result = await axios.get('http://localhost:5000/worksessions', this.req_config)
             if (result.data){
                 return result.data
             }
