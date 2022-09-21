@@ -1,5 +1,5 @@
 from fastapi import APIRouter, status, HTTPException, Depends
-from server import schemas, models
+from server import schemas, models, oauth2
 
 from server.utils import hash
 from server.database import get_db
@@ -28,6 +28,17 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
 
 
+
+@router.get('/current', response_model=schemas.UserOut)
+def get_current_user(db: Session = Depends(get_db), current_user: int=Depends(oauth2.get_current_user)):
+    user = db.query(models.User).filter(models.User.id == current_user.id).first()
+
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='User not found')
+
+    return user
+
+
 @router.get('/{id}', response_model=schemas.UserOut)
 def get_user(id: int, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == id).first()
@@ -36,3 +47,4 @@ def get_user(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='User not found')
 
     return user
+

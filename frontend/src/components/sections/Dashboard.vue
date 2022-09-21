@@ -12,7 +12,13 @@ let update_session_data = UpdateSession.data()
 let exercise_list = ref([])
 
 async function populateList(){
-    let result = await axios.get('http://localhost:5000/worksessions')
+    let request_config = {
+        headers: {
+            Authorization: `Bearer ${result.data.access_token}`
+        }
+    }
+
+    let result = await axios.get('http://localhost:5000/worksessions', request_config)
         if (result.data){
             exercise_list.value = result.data
         }
@@ -54,6 +60,7 @@ export default {
             text_exer: 1,
         }
     },
+
 
     
     methods : {
@@ -113,7 +120,9 @@ export default {
     },
 
     mounted: function(){
-        this.populateList()
+        // this.populateList()
+        let user = window.localStorage.getItem('current_user')
+        console.log(user)
     }
 }
 </script>
