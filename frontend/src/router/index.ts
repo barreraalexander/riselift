@@ -16,17 +16,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/register',
     name: 'register',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/LoginView.vue')
+    component: () => import(/* webpackChunkName: "register" */ '@/views/LoginView.vue')
   },
   {
     path: '/dashboard',
     name: 'dashboard',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/DashboardView.vue')
+    component: () => import(/* webpackChunkName: "dashboard" */ '@/views/DashboardView.vue')
   },
   {
     path: '/new_session',
     name: 'new_session',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/NewSessionView.vue')
+    component: () => import(/* webpackChunkName: "new session" */ '@/views/NewSessionView.vue')
   },
 ]
 

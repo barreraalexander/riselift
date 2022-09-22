@@ -1,0 +1,49 @@
+#LoginView{
+    display: flex;
+    height: 100vh;
+    background: $proj_lprimary;
+    .login_panel{
+        flex: 1;
+    }
+    .login_decoration{
+        background: url('@/assets/images/exercise1.jpg');
+        background-position: center;
+        background-size: cover;        
+    }
+    .login_form_ctnr{
+        align-items: center;
+        display: flex;
+        flex-flow: column;
+        gap: 1em;
+        padding-top: 2em;
+        h1{
+            color: #000;
+        }
+    }
+    .button_ctnr{
+        display: flex;
+        button{
+            width: 8em;
+        }
+        #login_button{
+            border-radius: 10px 0px 0px 10px;
+        }
+        #register_button{
+            border-radius: 0px 10px 10px 0px;
+        }
+    }
+    form{
+        display: flex;
+        flex-flow: column;
+        gap: .5em;
+    }
+    .form_group{
+        display: flex;
+        flex-flow: column;
+        gap: .25em;
+        button{
+            width: 6em;
+        }
+    }
+}
+

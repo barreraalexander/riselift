@@ -32,7 +32,7 @@ export default defineComponent({
 
 <style lang="scss">
 #HeaderSection{
-    height: 2em;
+    // height: 2em;
     background: #fff;
     padding: .5em;
     a{

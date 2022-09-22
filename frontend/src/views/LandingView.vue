@@ -1,20 +1,22 @@
 <template>
-    <section id="LandingView">
-      <LandingSectionVue/>
-      <StorySectionVue/>
-      <img
-          id="wavetop"
-          src="@/assets/images/icons/orange_wave1.svg"
-          alt=""
-      >
-      <AboutProgramVue/>
-      <img
-          id="wavebottom"
-          src="@/assets/images/icons/orange_wave1.svg"
-          alt=""
-      >
-      <AboutMeVue/>
-    </section>
+
+<section id="LandingView">
+    <LandingSectionVue/>
+    <StorySectionVue/>
+    <img
+        id="wavetop"
+        src="@/assets/images/icons/orange_wave1.svg"
+        alt=""
+    >
+    <AboutProgramVue/>
+    <img
+        id="wavebottom"
+        src="@/assets/images/icons/orange_wave1.svg"
+        alt=""
+    >
+    <AboutMeVue/>
+</section>
+
 </template>
   
 <script lang="ts">
