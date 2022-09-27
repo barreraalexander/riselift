@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import LandingView from '@/views/LandingView.vue'
 
 const routes: Array<RouteRecordRaw> = [

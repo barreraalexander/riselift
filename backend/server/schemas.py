@@ -81,7 +81,7 @@ class ExerciseCreate(ExerciseBase):
 class Exercise(ExerciseBase):
     id: int
     worksession_id: int
-    owner_id: int
+    # owner_id: int
 
     class Config:
         orm_mode = True

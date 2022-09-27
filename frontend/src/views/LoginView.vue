@@ -44,7 +44,7 @@ export default defineComponent ({
     name: "LoginView",
     data (){
         return {
-            submit_type: 'regiser',
+            submit_type: 'register',
             email: '',
             password: ''
         }
@@ -65,19 +65,21 @@ export default defineComponent ({
             )
 
             let result = await axios.post('http://localhost:5000/login', bodyFormData)
-         
+            // console.log(result.data)
             let request_config = {
                 headers: {
                     Authorization: `Bearer ${result.data.access_token}`
 
                 }
             }
-        
-            console.log(request_config)
-
 
             let current_user = await axios.get('http://localhost:5000/users/current', request_config)
-            console.log(current_user)
+        
+            if (current_user.data){
+                window.location.href = 'http://localhost:8080/dashboard'
+                window.localStorage.setItem('current_user', result.data.access_token)
+                
+            }
 
         }
     },
