@@ -1,10 +1,7 @@
-from unicodedata import name
 from pydantic import BaseModel, EmailStr
 
 from datetime import datetime
 from typing import Optional
-
-
 
 class UserOut(BaseModel):
     id: int
@@ -31,6 +28,7 @@ class WorkSession(WorkSessionBase):
 
     class Config:
         orm_mode = True
+
 
 
 

@@ -13,10 +13,26 @@ import HeaderNav from './components/navbars/HeaderNav.vue';
 import FooterNav from './components/navbars/FooterNav.vue'
 
 export default defineComponent({
-    name: 'App',
+name: 'App',
     components: {
         HeaderNav,
         FooterNav
+    },
+    methods: {
+        async generateAuthorizedHeader(){
+            let local_user = window.localStorage.getItem("current_user");
+            if (local_user != null) {
+                let auth_token = `Bearer ${local_user}`
+                let request_config = {
+                    headers: {
+                        Authorization: auth_token
+                    }
+                };
+                return request_config
+            } else {
+                return null
+            }
+        }
     }
 })
 

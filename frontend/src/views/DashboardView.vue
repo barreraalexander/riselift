@@ -19,6 +19,9 @@
 import DashboardProfile from "../components/pieces/DashboardProfile.vue";
 import DashboardAddNew from "../components/pieces/DashboardAddNew.vue";
 // import LastWorkSummary from "../components/pieces/LastWorkSummary.vue";
+import AppVue from "../App.vue";
+
+let app_methods = AppVue.methods
 
 import { defineComponent, ref } from "vue";
 import User from '../types/User'
@@ -35,15 +38,10 @@ export default defineComponent({
     },
     methods: {
         async loadUser(get_request_config=false) {
-            let local_user = window.localStorage.getItem("current_user");
-            if (local_user != null) {
-                let auth_token = `Bearer ${local_user}`
-                let request_config = {
-                    headers: {
-                        Authorization: auth_token
-                    }
-                };
-                // let current_user = await axios<User>.get('http://localhost:5000/users/current', request_config)
+            // let current_user = await axios.get
+            let request_config =  await app_methods?.generateAuthorizedHeader()
+            // console.log(request_config)
+            if (request_config != null){
                 let current_user = await axios.get('http://localhost:5000/users/current', request_config)
                 if (current_user.data) {
                     this.user = current_user.data;
@@ -52,6 +50,9 @@ export default defineComponent({
                     if (get_request_config){
                         return request_config
                     }
+
+            }
+
 
                     return current_user.data
                 } else {
