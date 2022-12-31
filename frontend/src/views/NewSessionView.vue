@@ -184,7 +184,7 @@ export default defineComponent({
                 rep_count: rep_count.value,
                 weight: weight.value,
                 weight_type: exercise_unit.value,
-                worksession_id: this.new_session_id
+                id: this.new_session_id
             }
 
             let local_user = window.localStorage.getItem("current_user");

@@ -12,6 +12,21 @@ class UserOut(BaseModel):
     class Config:
         orm_mode = True
 
+class UserBase(BaseModel):
+    id: int
+    email: EmailStr
+    password: str
+    name: str
+    upldate: datetime
+    modate: datetime
+
+
+class User_MinData(BaseModel):
+    id: Optional[int] 
+    name: str
+    email: str
+    password: str
+
 
 class WorkSessionBase(BaseModel):
     name: str
@@ -28,8 +43,6 @@ class WorkSession(WorkSessionBase):
 
     class Config:
         orm_mode = True
-
-
 
 
 
@@ -55,8 +68,8 @@ class TokenData(BaseModel):
 class WorkSessionOut(BaseModel):
     id: int
     name: str
-    session_begin: datetime
-    session_end: datetime
+    session_begin: Optional[datetime]
+    session_end: Optional[datetime]
     owner: UserOut
     # WorkSession: WorkSession
 

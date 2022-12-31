@@ -7,7 +7,7 @@ from server.database import Base, get_db
 from server import create_app
 from server.config import settings
 from server.oauth2 import create_access_token
-from server import models
+from server import models, schemas
 
 from secrets import token_hex
 
@@ -49,17 +49,22 @@ def client(session):
 @pytest.fixture
 def test_user2(client):
     user_data = {
+        "name" : "jane",
         "email" : "sheik123@gmail.com",
         "password" : "password234" 
     }
-
     res = client.post("/users/", json=user_data)
 
-    assert res.status_code == 201
+    new_user = schemas.User_MinData(**user_data)
+    
+    new_user.id = res.json()['id']
+    # new_user.id = 10
 
-    new_user = res.json()
-    new_user['password'] = user_data['password']
+    assert new_user.email == f'sheik123@gmail.com'
+    assert res.status_code == 201
     return new_user
+
+
 
 @pytest.fixture
 def test_user(client):
@@ -71,17 +76,19 @@ def test_user(client):
 
     res = client.post("/users/", json=user_data)
 
-    assert res.status_code == 201
+    new_user = schemas.User_MinData(**user_data)
+    
+    new_user.id = res.json()['id']
 
-    new_user = res.json()
-    new_user['password'] = user_data['password']
+    assert new_user.email == f'sheik@gmail.com'
+    assert res.status_code == 201
     return new_user
 
 
 @pytest.fixture
 def token(test_user):
     return create_access_token({
-        "user_id" : test_user.get('id'),
+        "user_id" : test_user.id,
     })
 
 
@@ -100,19 +107,23 @@ def test_worksessions(test_user, session, test_user2):
     worksessions_data = [
         {
             'name' : 'workout 1',
-            'owner_id' : test_user.get('id')
+            'owner_id' : test_user.id
         },
         {
             'name' : 'workout 2',
-            'owner_id' : test_user.get('id')
+            'owner_id' : test_user.id
         },
         {
             'name' : 'workout 3',
-            'owner_id' : test_user.get('id')
+            'owner_id' : test_user.id
         },
         {
             'name' : 'workout 1',
-            'owner_id' : test_user2.get('id')
+            'owner_id' : test_user2.id
+        },
+        {
+            'name' : 'workout 2',
+            'owner_id' : test_user2.id
         },
 
     ]
@@ -120,7 +131,9 @@ def test_worksessions(test_user, session, test_user2):
     def create_worksession_model(work_session):
         return models.WorkSession(**work_session)
 
+
     worksession_map = map(create_worksession_model, worksessions_data)
+    # print (worksession_map)
     worksessions = list(worksession_map)
 
     session.add_all(worksessions)

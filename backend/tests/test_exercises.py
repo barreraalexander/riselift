@@ -52,7 +52,7 @@ def test_create_exercises(authorized_client, test_user, test_worksessions,
             "weight": weight,
             "weight_type": weight_type,
             "worksession_id": test_worksessions[0].id,
-            "owner_id": test_user.get('id')
+            "owner_id": test_user.id
         }
     )
 
