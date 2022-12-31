@@ -146,7 +146,7 @@ def test_worksessions(test_user, session, test_user2):
 
 
 @pytest.fixture
-def test_exercises(test_worksessions, session):
+def test_exercises(test_worksessions, test_user, session):
     exercises_data = [
         {
             'name': 'exercise1',
@@ -154,6 +154,7 @@ def test_exercises(test_worksessions, session):
             'rep_count': 10,
             'weight': 105,
             'weight_type': 'lbs',
+            'owner_id' : test_user.id,
             'worksession_id' : test_worksessions[0].id
         }
     ]

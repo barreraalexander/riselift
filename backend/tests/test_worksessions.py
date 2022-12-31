@@ -10,7 +10,6 @@ def test_get_all_worksessions(authorized_client, test_worksessions):
     worksessions_map = map(validate, res.json())
     worksessions_list = list(worksessions_map)
 
-    # assert len(res.json()) == len(test_worksessions)
     assert res.status_code == 200
 
 
