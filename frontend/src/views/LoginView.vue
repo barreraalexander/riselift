@@ -12,9 +12,9 @@
                 </button>
             </div>
             <h1 id="action_type_h1">
-                Register
+                {{submit_type}}
             </h1>
-            <form action="">
+            <form id="auth_form" action="">
                 <div class="form_group" v-show="show_name_input">
                     <label for="name">
                         Name
@@ -63,15 +63,15 @@ export default defineComponent ({
         handleChangeForm(e: Event){
             let change_button = e.target as HTMLElement
 
-            let action_type_h1 = document.querySelector('#action_type_h1') as HTMLElement
+            // let action_type_h1 = document.querySelector('#action_type_h1') as HTMLElement
 
             if (change_button.id == 'register_button'){
                 this.submit_type = 'register'
-                action_type_h1.innerText = 'Register'
+                this.show_name_input = true
             }
             if (change_button.id == 'login_button'){
                 this.submit_type = 'login'
-                action_type_h1.innerText = 'Login'
+                this.show_name_input = false
             }
         },
 
@@ -98,14 +98,14 @@ export default defineComponent ({
             let current_user = await axios.get('http://localhost:5000/users/current', request_config)
         
             if (current_user.data){
-                window.location.href = 'http://localhost:8080/dashboard'
                 window.localStorage.setItem('current_user', result.data.access_token)
+                window.location.href = 'http://localhost:8080/dashboard'
                 
             }
         },
         async attemptRegister(){
             let new_user = {
-               name: "Claude",
+               name: this.name,
                email: this.email,
                password: this.password
             }
@@ -113,7 +113,7 @@ export default defineComponent ({
             let result = await axios.post('http://localhost:5000/users', new_user)
             
             if (result.data){
-                console.log(result.data)
+                return true
             }
 
         },
@@ -124,10 +124,12 @@ export default defineComponent ({
             }
             
             if (this.submit_type == 'register'){
-                this.attemptRegister()
+                let validated = await this.attemptRegister()
+                if (validated){
+                    this.attemptLogin()
+                }
+
             }
-
-
 
         }
     },
@@ -157,6 +159,7 @@ export default defineComponent ({
         padding-top: 2em;
         h1{
             color: #000;
+            text-transform: capitalize;
         }
     }
     .button_ctnr{
