@@ -1,6 +1,6 @@
 <template>
     <div class="last_work_summary">
-        <h1>
+        <!-- <h1>
             Most Recent 
         </h1>
         <p>
@@ -9,15 +9,15 @@
         <p>
             {{most_recent.name}}
         </p>
-
+ -->
 
         <ul>
-            <li
+            <!-- <li
                 v-for="worksession in worksessions"
                 :key="worksession.id"
             >
                 {{worksession.name}}
-            </li>
+            </li> -->
         </ul>
     </div>
 </template>
@@ -41,11 +41,11 @@ export default {
         }
     },
     mounted: async function(){
-        let worksessions = await this.getWorksessions()
+        // let worksessions = await this.getWorksessions()
 
-        this.worksessions = worksessions
+        // this.worksessions = worksessions
 
-        this.most_recent = worksessions[0]
+        // this.most_recent = worksessions[0]
 
 
 

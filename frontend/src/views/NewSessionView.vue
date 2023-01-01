@@ -209,40 +209,44 @@ export default defineComponent({
             let weight_int = parseInt(weight.value)
 
             let rep = document.querySelector('#exercise_reps') as HTMLInputElement
+
             let rep_int = parseInt(rep.value)
 
-            let operand= parseInt(event.target.dataset.operand)
+            // let operand= parseInt(event.target.dataset.operand)
 
-            
-            if (event.target.id==='add_weight'){
-                weight_int += operand
-            }
+            // if (event.target){
+            //     if (event.target.id==='add_weight'){
+            //         weight_int += operand
+            //     }
+    
+            //     if (event.target.id==='sub_weight'){
+            //         weight_int -= operand
+            //     }
+    
+            //     if (event.target.id==='add_rep'){
+            //         rep_int += operand
+            //     }
+    
+            //     if (event.target.id==='sub_rep'){
+            //         rep_int -= operand
+            //     }
 
-            if (event.target.id==='sub_weight'){
-                weight_int -= operand
-            }
+            // }
 
-            if (event.target.id==='add_rep'){
-                rep_int += operand
-            }
 
-            if (event.target.id==='sub_rep'){
-                rep_int -= operand
-            }
-
-            weight.value = weight_int
-            rep.value = rep_int
+            // weight.value = weight_int
+            // rep.value = rep_int
         }
     },
-    mounted: async function(){
-        this.user = await dashboard_methods?.loadUser()
-        if (this.user){
-            console.log(this.user.name)
-            // console.log(this.user.email)
+    // mounted: async function(){
+    //     this.user = await dashboard_methods?.loadUser()
+    //     if (this.user){
+    //         console.log(this.user.name)
+    //         // console.log(this.user.email)
 
-        }
+    //     }
 
-    }
+    // }
 })
 
 </script>

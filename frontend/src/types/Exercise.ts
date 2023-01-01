@@ -5,7 +5,7 @@ interface Exercise {
     rep_count: number,
     weight: number,
     weight_type: string,
-    id: number,
+    worksession_id: number,
     owner_id: number
 }
 

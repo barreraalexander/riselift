@@ -11,7 +11,7 @@
                     Register
                 </button>
             </div>
-            <h1>
+            <h1 id="action_type_h1">
                 Login
             </h1>
             <form action="">
@@ -50,11 +50,23 @@ export default defineComponent ({
         }
     },
     methods: {
-        handleChangeForm(){
-            alert('here')
+        handleChangeForm(e: Event){
+            let change_button = e.target as HTMLElement
+
+            let action_type_h1 = document.querySelector('#action_type_h1') as HTMLElement
+
+            if (change_button.id == 'register_button'){
+                this.submit_type = 'register'
+                action_type_h1.innerText = 'Register'
+            }
+            if (change_button.id == 'login_button'){
+                this.submit_type = 'login'
+                action_type_h1.innerText = 'Login'
+            }
         },
-        async handleSubmit(e: Event){
-            e.preventDefault()
+
+        async attemptLogin(){
+
             var bodyFormData = new FormData()
             bodyFormData.append(
                 'username', this.email
@@ -80,6 +92,32 @@ export default defineComponent ({
                 window.localStorage.setItem('current_user', result.data.access_token)
                 
             }
+        },
+        async attemptRegister(){
+            let new_user = {
+               name: "Claude",
+               email: this.email,
+               password: this.password
+            }
+
+            let result = await axios.post('http://localhost:5000/users', new_user)
+            
+            if (result.data){
+                console.log(result.data)
+            }
+
+        },
+        async handleSubmit(e: Event){
+            e.preventDefault()
+            if (this.submit_type == 'login'){
+                this.attemptLogin()
+            }
+            
+            if (this.submit_type == 'register'){
+                this.attemptRegister()
+            }
+
+
 
         }
     },

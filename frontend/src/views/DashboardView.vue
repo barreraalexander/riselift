@@ -36,34 +36,34 @@ export default defineComponent({
         // const exercises = ref<Exercise[]>()
         return { user };
     },
-    methods: {
-        async loadUser(get_request_config=false) {
-            // let current_user = await axios.get
-            let request_config =  await app_methods?.generateAuthorizedHeader()
-            // console.log(request_config)
-            if (request_config != null){
-                let current_user = await axios.get('http://localhost:5000/users/current', request_config)
-                if (current_user.data) {
-                    this.user = current_user.data;
-                    // console.log(current_user.data)
-                    // return current_user.data
-                    if (get_request_config){
-                        return request_config
-                    }
+    // methods: {
+    //     async loadUser(get_request_config=false) {
+    //         // let current_user = await axios.get
+    //         let request_config =  await app_methods?.generateAuthorizedHeader()
+    //         // console.log(request_config)
+    //         if (request_config != null){
+    //             let current_user = await axios.get('http://localhost:5000/users/current', request_config)
+    //             if (current_user.data) {
+    //                 this.user = current_user.data;
+    //                 // console.log(current_user.data)
+    //                 // return current_user.data
+    //                 if (get_request_config){
+    //                     return request_config
+    //                 }
 
-            }
+    //         }
 
 
-                    return current_user.data
-                } else {
-                    // redirect to home or login or something because the token has expired
-                }
-            }
-        }
-    },
-    mounted: function () {
-        this.loadUser();
-    },
+    //                 return current_user.data
+    //             } else {
+    //                 // redirect to home or login or something because the token has expired
+    //             }
+    //         }
+    //     }
+    // },
+    // mounted: function () {
+    //     this.loadUser();
+    // },
     components: {
         DashboardProfile,
         DashboardAddNew
