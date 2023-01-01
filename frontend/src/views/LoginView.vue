@@ -12,20 +12,26 @@
                 </button>
             </div>
             <h1 id="action_type_h1">
-                Login
+                Register
             </h1>
             <form action="">
-                <div class="form_group">
-                    <label for="">
-                        Username
+                <div class="form_group" v-show="show_name_input">
+                    <label for="name">
+                        Name
                     </label>
-                    <input type="text" v-model="email">
+                    <input type="text" name="name" v-model="name">
                 </div>
                 <div class="form_group">
-                    <label for="">
+                    <label for="email">
+                        Email
+                    </label>
+                    <input type="text" name="email" v-model="email">
+                </div>
+                <div class="form_group">
+                    <label for="password">
                         Password
                     </label>
-                    <input type="text" v-model="password">
+                    <input type="text" name="password" v-model="password">
                 </div>
                 <div class="form_group">
                     <button @click="handleSubmit($event)" role="submit">
@@ -48,7 +54,9 @@ export default defineComponent ({
         return {
             submit_type: 'register',
             email: '',
-            password: ''
+            password: '',
+            name: '',
+            show_name_input: true
         }
     },
     methods: {
