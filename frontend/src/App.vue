@@ -21,6 +21,7 @@ name: 'App',
     methods: {
         async generateAuthorizedHeader(){
             let local_user = window.localStorage.getItem("current_user");
+            console.log(local_user)
             if (local_user != null) {
                 let auth_token = `Bearer ${local_user}`
                 let request_config = {

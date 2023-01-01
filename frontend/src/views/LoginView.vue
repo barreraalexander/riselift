@@ -28,7 +28,9 @@
                     <input type="text" v-model="password">
                 </div>
                 <div class="form_group">
-                    <button @click="handleSubmit($event)" role="submit">submit</button>
+                    <button @click="handleSubmit($event)" role="submit">
+                        submit
+                    </button>
                 </div>
             </form>
         </div>
